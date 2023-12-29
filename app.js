@@ -3,14 +3,14 @@ const bodyParser = require('body-parser');
 let ejs = require('ejs');
 const app = express();
 
-var items = [];
+let items = [];
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}))
 app.get('/', function (req, res) {
-    var today = new Date();
+    let today = new Date();
     var day = '';
-    var currentDay = today.getDay();
+    let currentDay = today.getDay();
     
     // old code:
     // switch (currentDay) {
@@ -45,19 +45,19 @@ app.get('/', function (req, res) {
     // }
     // updated and better code down here:
 
-    var options = {
+    let options = {
         weekday: 'long',
         day: 'numeric',
         month: 'long'
     }
     
-    var day = today.toLocaleDateString('en-US', options);
+    let day = today.toLocaleDateString('en-US', options);
 
     res.render('index', { kindofDay: day, newItems: items });
 });
 
 app.post('/',function(req,res){
-    var item = req.body.newItem;
+    let item = req.body.newItem;
     items.push(item);
     res.redirect('/')
 })
