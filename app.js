@@ -79,6 +79,11 @@ app.listen(3000, function () {
 app.get('/work', function(req,res){
    res.render('index',{listTitle:'work list', newItems:workItems})
 });
+
+app.get('/about',function(req,res){
+    res.render('about');
+})
+
 // app.post('/work',function(req,res){
 //     // let work = req.body.newItem;
 //     // workItems.push(work);
