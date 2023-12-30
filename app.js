@@ -6,6 +6,7 @@ const app = express();
 
 
 let items = [];
+let workItems = [];
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}))
@@ -56,14 +57,30 @@ app.get('/', function (req, res) {
     
     var day = today.toLocaleDateString('en-US', options);
 
-    res.render('index', { kindofDay: day, newItems: items });
+    res.render('index', { listTitle: day, newItems: items });
 });
 
 app.post('/',function(req,res){
     let item = req.body.newItem;
-    items.push(item);
-    res.redirect('/')
+    if(req.body.list=== 'work'){
+        workItems.push(item);
+        res.redirect('/work');
+    }else{
+        items.push(item);
+        res.redirect('/');
+    }
+    
+    
 })
 app.listen(3000, function () {
     console.log('server is running in port 3000 ');
 });
+
+app.get('/work', function(req,res){
+   res.render('index',{listTitle:'work list', newItems:workItems})
+});
+// app.post('/work',function(req,res){
+//     // let work = req.body.newItem;
+//     // workItems.push(work);
+//     res.redirect('/work');
+// })
