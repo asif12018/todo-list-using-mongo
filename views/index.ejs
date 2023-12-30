@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to do list</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 <body>
     <!-- <.% %.> without the dot its know as scriptlet tag and its use to 
     add control flow js code in ejs file. its formula is to use it on every none html line-->
-    
 
-    <h1 >to day is <%= kindofDay %>!</h1>
+    <div class="box" id="heading">
+        <h1>to day is <%= kindofDay %>!</h1>
+    </div>
 
-    <ul>
-        <li>Buy a gun</li>
-        <li>Loaded it with bullet</li>
-        <li>Shoot someone</li>
-        
-        <%for(var i = 0; i < newItems.length; i++){%>
-            <li><%= newItems[i] %></li>
-        <%}%>
-    </ul>
+    <div class="box">
 
-    <form action="/" method="post">
-        <input type="text" name="newItem">
-        <button type="submit" name="button">Add</button>
-    </form>
-    
+
+        <%for(var i=0; i < newItems.length; i++){%>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newItems[i] %>
+                </p>
+            </div>
+
+            <%}%>
+
+                <form action="/" method="post" class="item">
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="button">+</button>
+                </form>
+
+    </div>
+
+
+
+
+
 </body>
+
 </html>

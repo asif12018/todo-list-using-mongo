@@ -3,10 +3,13 @@ const bodyParser = require('body-parser');
 let ejs = require('ejs');
 const app = express();
 
+
+
 let items = [];
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.static("public"))
 app.get('/', function (req, res) {
     let today = new Date();
     var day = '';
@@ -51,7 +54,7 @@ app.get('/', function (req, res) {
         month: 'long'
     }
     
-    let day = today.toLocaleDateString('en-US', options);
+    var day = today.toLocaleDateString('en-US', options);
 
     res.render('index', { kindofDay: day, newItems: items });
 });
