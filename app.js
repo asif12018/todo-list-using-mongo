@@ -14,21 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 
 // 1. create a data base
-mongoose.connect("mongodb+srv://asifrequest:123456789Asif@todolist.g310pbw.mongodb.net/todolistDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // Timeout in milliseconds to attempt server selection
-  socketTimeoutMS: 45000, // Timeout in milliseconds for socket connection
-})
-  .then(() => {
-    console.log('Connected to MongoDB Atlas');
-    app.listen(3000, function () {
-      console.log('Server is running on port 3000');
-    });
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB Atlas:', err);
-  });
+mongoose.connect("mongodb+srv://asifrequest:123456789Asif@todolist.g310pbw.mongodb.net/todolistDB");
 
 // 2. create new schema
 
