@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"));
 
 // 1. create a data base
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect("mongodb+srv://asifrequest:123456789Asif@todolist.g310pbw.mongodb.net/todolistDB");
 
 // 2. create new schema
 
@@ -59,6 +59,11 @@ app.get('/', function (req, res) {
     
 });
 
+
+
+
+
+//save list item from form
 app.post('/',function(req,res){
     let itemName = req.body.newItem;
     
@@ -72,6 +77,7 @@ app.post('/',function(req,res){
     
 });
 
+// delete from data base using checkbox
 app.post('/delete',function(req,res){
     const checkedItemId = req.body.checkbox;
     Item.findByIdAndDelete(checkedItemId)
